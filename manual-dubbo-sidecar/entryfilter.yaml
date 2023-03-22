@@ -1,0 +1,33 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  name: outbound-org.apache.dubbo.samples.basic.api.greetingservice-240.240.0.20-20880
+  namespace: meta-dubbo
+spec:
+  configPatches:
+  - applyTo: NETWORK_FILTER
+    match:
+      listener:
+        name: "240.240.0.20_20880"
+        filterChain:
+          filter:
+            name: envoy.filters.network.tcp_proxy # 上面设置的是 tcp 协议，因此会生成 tcp 的 filter
+    patch:
+      operation: REPLACE  # 替换上面的网络过滤器
+      value:
+        name: envoy.filters.network.dubbo_proxy # 替换为 dubbo 过滤器
+        typed_config:
+          '@type': type.googleapis.com/envoy.extensions.filters.network.dubbo_proxy.v3.DubboProxy
+          protocol_type: Dubbo
+          serialization_type: Hessian2
+          statPrefix: outbound|20880||org.apache.dubbo.samples.api.greetingservice
+          route_config:
+          - name: outbound|20880||org.apache.dubbo.samples.api.GreetingService
+            interface: org.apache.dubbo.samples.api.GreetingService # 接口
+            routes:
+            - match:
+                method:
+                  name:
+                    exact: sayHello # 匹配的方法
+              route:  # 指定 cluster 为由上面 ServiceEntry 生成的 cluster
+                cluster: outbound|20880||org.apache.dubbo.samples.api.greetingservice

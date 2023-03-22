@@ -1,0 +1,21 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: ServiceEntry
+metadata:
+  name: dubbo-demoservice
+  namespace: meta-dubbo
+  annotations:
+    interface: org.apache.dubbo.samples.api.GreetingService
+spec:
+  addresses:
+  - 240.240.0.20
+  hosts:
+    - org.apache.dubbo.samples.api.greetingservice
+  ports:
+    - number: 20880
+      name: tcp-dubbo
+      protocol: TCP
+  workloadSelector:
+    labels:
+      app: dubbo-sample-provider
+      version: v1
+  resolution: STATIC

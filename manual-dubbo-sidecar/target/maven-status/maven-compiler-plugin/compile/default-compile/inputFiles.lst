@@ -1,0 +1,5 @@
+/root/zt/istio/dubbo-samples/3-extensions/registry/manual-zookeeper/src/main/java/org/apache/dubbo/samples/ConsumerBootstrap.java
+/root/zt/istio/dubbo-samples/3-extensions/registry/manual-zookeeper/src/main/java/org/apache/dubbo/samples/impl/AnnotatedGreetingService.java
+/root/zt/istio/dubbo-samples/3-extensions/registry/manual-zookeeper/src/main/java/org/apache/dubbo/samples/action/GreetingServiceConsumer.java
+/root/zt/istio/dubbo-samples/3-extensions/registry/manual-zookeeper/src/main/java/org/apache/dubbo/samples/ProviderBootstrap.java
+/root/zt/istio/dubbo-samples/3-extensions/registry/manual-zookeeper/src/main/java/org/apache/dubbo/samples/api/GreetingService.java

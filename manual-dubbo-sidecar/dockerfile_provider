@@ -1,0 +1,4 @@
+FROM openjdk:8
+ADD ./target/dubbo-samples-zookeeper-1.0-SNAPSHOT.jar /dubbo-samples-zookeeper-1.0-SNAPSHOT.jar
+EXPOSE 20880
+ENTRYPOINT java -cp ./dubbo-samples-zookeeper-1.0-SNAPSHOT.jar org.apache.dubbo.samples.ProviderBootstrap
