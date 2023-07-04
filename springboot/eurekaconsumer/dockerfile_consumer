@@ -1,0 +1,4 @@
+FROM openjdk:8
+ADD ./target/eurekaconsumer-1.0-SNAPSHOT.jar /eurekaconsumer-1.0-SNAPSHOT.jar
+EXPOSE 9070
+ENTRYPOINT java -jar ./eurekaconsumer-1.0-SNAPSHOT.jar

@@ -1,0 +1,12 @@
+server:
+  port: 9070
+spring:
+  application:
+    name: eureka-consumer
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://eureka:8761/eureka/

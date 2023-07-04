@@ -1,0 +1,4 @@
+FROM openjdk:8
+ADD ./target/eurekaprovider-1.0-SNAPSHOT.jar /eurekaprovider-1.0-SNAPSHOT.jar
+EXPOSE 9000
+ENTRYPOINT java -jar ./eurekaprovider-1.0-SNAPSHOT.jar

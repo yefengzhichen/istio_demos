@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-provider
+  labels:
+    app: springboot-provider
+spec:
+  selector:
+    matchLabels:
+      app: springboot-provider
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: springboot-provider
+        version: v1
+    spec:
+      containers:
+        - name: provider
+          image: 127.0.0.1/captain/springboot-provider-test:v0.0.1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 9000
